@@ -1,13 +1,16 @@
-package model;
+package main.model;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Paths")
+@Table(name = "PATHS")
 public class Path extends PersistedEntity{
 	
+	@ManyToOne
 	private Town origin;
+	@ManyToOne
 	private Town destination;
 	private Integer distance;
 	

@@ -1,6 +1,7 @@
-package model;
+package main.model;
 
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
@@ -9,8 +10,8 @@ import javax.persistence.MappedSuperclass;
 public abstract class PersistedEntity {
 	
 	@Id
-	@GeneratedValue
-	private Long businessKey;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
@@ -19,7 +20,7 @@ public abstract class PersistedEntity {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((businessKey == null) ? 0 : businessKey.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
 
@@ -35,10 +36,10 @@ public abstract class PersistedEntity {
 		if (getClass() != obj.getClass())
 			return false;
 		PersistedEntity other = (PersistedEntity) obj;
-		if (businessKey == null) {
-			if (other.businessKey != null)
+		if (id == null) {
+			if (other.id != null)
 				return false;
-		} else if (!businessKey.equals(other.businessKey))
+		} else if (!id.equals(other.id))
 			return false;
 		return true;
 	}
@@ -47,7 +48,7 @@ public abstract class PersistedEntity {
 	 * @return the bussinesKey
 	 */
 	public Long getBussinesKey() {
-		return businessKey;
+		return id;
 	}
 
 }
